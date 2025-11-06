@@ -32,6 +32,9 @@
               pdfpc
             ];
             TYPST_FONT_PATHS = "${nexus-fonts}";
+            shellHook = ''
+              unset SOURCE_DATE_EPOCH
+            '';
           };
       }
     );

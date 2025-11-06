@@ -11,6 +11,8 @@
 //   Conference on Advances in Slide Making
 // ]
 
-#slide[
+#section("Erster Teil")
+
+#frame("Test")[
   Hello, world!
 ]

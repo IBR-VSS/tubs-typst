@@ -1,5 +1,6 @@
 #import "@preview/polylux:0.4.0": *
 
+#let date_format = "[day] [month repr:long] [year]"
 #let tubs = (
   black: rgb(0,0,0),
   red: rgb(190,30,60),
@@ -16,6 +17,41 @@
   violetlight: rgb(204,0,153),
   violetdark: rgb(118,0,84),
 )
+
+#let frame-header = toolbox.full-width-block(
+  fill: tubs.black.lighten(80%),
+  inset: (x: 2em, y: 0.5em),
+  height: 100%,
+)[
+  #set text(size: 1.5em)
+  #set align(bottom + left)
+  #toolbox.next-heading(h => [*#h*])
+]
+
+#let frame-footer(author, title) = toolbox.full-width-block(
+  height: 100%,
+  stroke: (top: 0.8pt + tubs.red),
+)[
+  #set text(size: 0.5em)
+  #place(
+    top + left,
+    dy: -15pt,
+  )[
+      #image("fig/TUBraunschweig_RGB_beamer.pdf", width: 20%)
+  ]
+  #place(top + left, dy: 1em, dx: 6cm)[
+    #datetime.today().display(date_format) | #author | #title | Seite #context here().page()
+  ]
+  #place(horizon + right, dx: -10pt)[
+    #image("fig/IBR_Logo_rgb_EN.pdf", width: 20%)
+  ]
+]
+
+/*
+*
+* Public Functions
+*
+*/
 
 #let title-slide(title, subtitle, author) = slide[
   #set align(center)
@@ -55,7 +91,7 @@
         = #title
         #subtitle
 
-        #text(size: 0.8em)[#author]
+        #text(size: 0.8em)[#author, #datetime.today().display(date_format)]
       ]
     ]
     #align(center + bottom)[
@@ -64,13 +100,42 @@
   ]
 ]
 
+#let section(title) = slide[
+  #set page(
+    header: none,
+    footer: none,
+    margin: 5%,
+  )
+  #set text(size: 1.5em)
+  #set align(horizon + center)
+  #toolbox.register-section(title)
+  #block(
+    height: 1.5em,
+    width: 100%,
+    fill: tubs.black.lighten(80%)
+  )[
+    *#title*
+  ]
+]
+
+#let frame(title, body) = slide[
+  #show heading.where(level: 1): none
+  = #title
+  #align(horizon)[#body]
+]
+
 #let setup(
     title: "",
     subtitle: "",
     author: "",
     body
 ) = {
-  set page(paper: "presentation-4-3")
+  set page(
+    paper: "presentation-4-3",
+    margin: (x: 2cm, y: 3.5cm),
+    header: align(top, frame-header),
+    footer: align(bottom, frame-footer(author, title)),
+  )
   set text(size: 24pt, font: "NexusSansPro")
 
   title-slide(title, subtitle, author)
