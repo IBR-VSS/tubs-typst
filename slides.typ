@@ -11,8 +11,12 @@
 //   Conference on Advances in Slide Making
 // ]
 
+#toc
+
 #section("Erster Teil")
 
 #frame("Test")[
   Hello, world!
 ]
+
+#section("Zweiter Teil")

@@ -1,6 +1,8 @@
 #import "@preview/polylux:0.4.0": *
 
 #let date_format = "[day] [month repr:long] [year]"
+
+// Colors
 #let tubs = (
   black: rgb(0,0,0),
   red: rgb(190,30,60),
@@ -124,6 +126,12 @@
   #align(horizon)[#body]
 ]
 
+#let toc = slide[
+  #toolbox.all-sections((sections, curr) => {
+    enum(..sections)
+  })
+]
+
 #let setup(
     title: "",
     subtitle: "",
@@ -137,6 +145,7 @@
     footer: align(bottom, frame-footer(author, title)),
   )
   set text(size: 24pt, font: "NexusSansPro")
+  set align(horizon)
 
   title-slide(title, subtitle, author)
   body
