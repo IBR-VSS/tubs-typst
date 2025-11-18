@@ -1,0 +1,15 @@
+[package]
+name = "tubs-thesis-template"
+version = "0.1.0"
+entrypoint = "template.typ"
+authors = ["Lars Richard <@schmop>"]
+repository = "https://github.com/schmop/tu-braunschweig-thesis-template"
+license = "MIT"
+description = "A thesis template for the TU Braunschweig"
+keywords = ["thesis", "master", "bachelor", "university", "tubs", "Braunschweig", "Technische Universität Braunschweig"]
+categories = ["thesis"]
+
+[template]
+path = "template"
+entrypoint = "example-thesis.typ"
+thumbnail = "thumbnail.png"
