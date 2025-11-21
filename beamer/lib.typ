@@ -145,6 +145,15 @@
     footer: align(bottom, frame-footer(author, title)),
   )
   set text(size: 24pt, font: "NexusSansPro")
+
+  let gray = tubs.black.lighten(40%)
+  set list(
+    marker: (
+      [#text(stroke: tubs.red, fill: tubs.red)[■]],
+      [#text(stroke: gray, fill: gray)[■]],
+    ),
+  )
+
   set align(horizon)
 
   title-slide(title, subtitle, author)
