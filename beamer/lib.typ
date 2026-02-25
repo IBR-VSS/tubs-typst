@@ -35,6 +35,10 @@
   stroke: (top: 0.8pt + tubs.red),
 )[
   #set text(size: 0.5em)
+
+  #let curr = toolbox.slide-number
+  #let final = toolbox.last-slide-number
+
   #place(
     top + left,
     dy: -15pt,
@@ -42,7 +46,7 @@
       #image("fig/TUBraunschweig_RGB_beamer.pdf", width: 20%)
   ]
   #place(top + left, dy: 1em, dx: 6cm)[
-    #datetime.today().display(date_format) | #author | #title | Seite #context here().page()
+    #datetime.today().display(date_format) | #author | #title | #curr - #final
   ]
   #place(horizon + right, dx: -10pt)[
     #image("fig/IBR_Logo_rgb_EN.pdf", width: 20%)
