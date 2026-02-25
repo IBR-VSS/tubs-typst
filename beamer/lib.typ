@@ -2,6 +2,12 @@
 
 #let date_format = "[day] [month repr:long] [year]"
 
+#let logical-slide = counter("logical-slide")
+
+#let inactive-slide = {
+  logical-slide.update(n => {n - 1})
+}
+
 // Colors
 #let tubs = (
   black: rgb(0,0,0),
@@ -104,6 +110,7 @@
       #rect(width: 100%, height: 20pt, fill: tubs.red)
     ]
   ]
+  #inactive-slide
 ]
 
 #let section(title) = slide[
@@ -122,6 +129,8 @@
   )[
     *#title*
   ]
+
+  #inactive-slide
 ]
 
 #let frame(title, body) = slide[
