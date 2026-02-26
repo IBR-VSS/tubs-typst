@@ -20,3 +20,11 @@
 ]
 
 #section("Zweiter Teil")
+
+#frame([Test 2])[
+  #lorem(12)
+]
+
+#frame([Backup slide], active: false)[
+  - Notice, that when the `active` flag is set to `false`, the page number is not incremented
+]

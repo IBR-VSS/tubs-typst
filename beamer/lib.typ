@@ -133,10 +133,14 @@
   #inactive-slide
 ]
 
-#let frame(title, body) = slide[
+#let frame(title, active: true, body) = slide[
   #show heading.where(level: 1): none
   = #title
   #align(horizon)[#body]
+
+  #if not active {
+    inactive-slide
+  }
 ]
 
 #let toc = slide[
