@@ -1,29 +1,30 @@
 #import "@preview/polylux:0.4.0": *
+#import "./config.typ": *
 
 #let date_format = "[day] [month repr:long] [year]"
 
 #let logical-slide = counter("logical-slide")
 
 #let inactive-slide = {
-  logical-slide.update(n => {n - 1})
+  logical-slide.update(n => { n - 1 })
 }
 
 // Colors
 #let tubs = (
-  black: rgb(0,0,0),
-  red: rgb(190,30,60),
-  white: rgb(255,255,255),
-  yellow: rgb(255,205,0),
-  orange: rgb(250,110,0),
-  green: rgb(137,164,0),
-  greenlight: rgb(198,238,0),
-  greendark: rgb(0,113,86),
-  blue: rgb(0,128,180),
-  bluelight: rgb(124,205,230),
-  bluedark: rgb(0,83,116),
-  violet: rgb(118,0,118),
-  violetlight: rgb(204,0,153),
-  violetdark: rgb(118,0,84),
+  black: rgb(0, 0, 0),
+  red: rgb(190, 30, 60),
+  white: rgb(255, 255, 255),
+  yellow: rgb(255, 205, 0),
+  orange: rgb(250, 110, 0),
+  green: rgb(137, 164, 0),
+  greenlight: rgb(198, 238, 0),
+  greendark: rgb(0, 113, 86),
+  blue: rgb(0, 128, 180),
+  bluelight: rgb(124, 205, 230),
+  bluedark: rgb(0, 83, 116),
+  violet: rgb(118, 0, 118),
+  violetlight: rgb(204, 0, 153),
+  violetdark: rgb(118, 0, 84),
 )
 
 #let frame-header = toolbox.full-width-block(
@@ -49,21 +50,21 @@
     top + left,
     dy: -15pt,
   )[
-      #image("fig/TUBraunschweig_RGB_beamer.pdf", width: 20%)
+    #image("fig/TUBraunschweig_RGB_beamer.pdf", width: 20%)
   ]
   #place(top + left, dy: 1em, dx: 6cm)[
-    #datetime.today().display(date_format) | #author | #title | #curr - #final
+    #date.display(date_format) | #author | #title | #curr - #final
   ]
   #place(horizon + right, dx: -10pt)[
-    #image("fig/IBR_Logo_rgb_EN.pdf", width: 20%)
+    #image(institute-logo, width: 20%)
   ]
 ]
 
 /*
-*
-* Public Functions
-*
-*/
+ *
+ * Public Functions
+ *
+ */
 
 #let title-slide(title, subtitle, author) = slide[
   #set align(center)
@@ -74,7 +75,7 @@
     spacing: 1em,
     inset: (top: 1.2em, bottom: 0.2em, rest: 0.6em),
   )[
-    #align(right)[#image("fig/IBR_Logo_rgb_EN.pdf", width: 40%)]
+    #align(right)[#image(institute-logo, width: 40%)]
   ]
   #block(
     width: 95%,
@@ -103,7 +104,7 @@
         = #title
         #subtitle
 
-        #text(size: 0.8em)[#author, #datetime.today().display(date_format)]
+        #text(size: 0.8em)[#author, #date.display(date_format)]
       ]
     ]
     #align(center + bottom)[
@@ -125,7 +126,7 @@
   #block(
     height: 1.5em,
     width: 100%,
-    fill: tubs.black.lighten(80%)
+    fill: tubs.black.lighten(80%),
   )[
     *#title*
   ]
@@ -150,10 +151,10 @@
 ]
 
 #let setup(
-    title: "",
-    subtitle: "",
-    author: "",
-    body
+  title: "",
+  subtitle: "",
+  author: "",
+  body,
 ) = {
   set page(
     paper: "presentation-4-3",
